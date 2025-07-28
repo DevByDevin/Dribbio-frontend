@@ -5,9 +5,9 @@ import Login from '../pages/Login';
 
 export const AppRoutes = () => (
   <Routes>
+    <Route path='/login' element={<Login />} />
     <Route path='/' element={<MainLayout />}>
       <Route index element={<Home />} />
-      <Route path='/login' element={<Login />} />
     </Route>
     {/* 
     <Route path='/activities' element={<ActivityList />} />

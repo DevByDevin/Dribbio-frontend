@@ -1,19 +1,17 @@
-import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
+import { useAuthStore } from '../store';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { user, setEmail, setPassword, login } = useAuthStore();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // 模拟登录逻辑
-    if (email === 'test@example.com' && password === 'password') {
-      alert('登录成功！');
-      navigate('/home'); // 登录成功后跳转到首页
-    } else {
-      alert('邮箱或密码错误！');
+    try {
+      await login(user?.email || '', user?.password || '');
+      navigate('/');
+    } catch (error) {
+      console.error('Login failed:', error);
     }
   };
 
@@ -23,12 +21,16 @@ const Login = () => {
         onSubmit={handleLogin}
         className='bg-white p-6 rounded shadow-md w-full max-w-sm'
       >
+        <div className='text-xl font-bold text-blue-600 w-full text-center mb-4'>
+          <Link to='/'>Dribbio</Link>
+        </div>
         <h2 className='text-2xl font-semibold mb-4 text-center'>Login</h2>
         <div className='mb-4'>
           <label className='block text-gray-700'>Email:</label>
           <input
             type='email'
-            value={email}
+            value={user?.email || ''}
+            placeholder='Email'
             onChange={(e) => setEmail(e.target.value)}
             className='w-full px-3 py-2 border rounded'
             required
@@ -38,7 +40,8 @@ const Login = () => {
           <label className='block text-gray-700'>Password:</label>
           <input
             type='password'
-            value={password}
+            value={user?.password || ''}
+            placeholder='Password'
             onChange={(e) => setPassword(e.target.value)}
             className='w-full px-3 py-2 border rounded'
             required
