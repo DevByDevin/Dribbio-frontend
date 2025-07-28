@@ -1,54 +1,29 @@
-# React + TypeScript + Vite
+# 🏀 Dribbio 前端项目 | Dribbio Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Dribbio** 是一个面向华人篮球爱好者的社交平台，用户可以创建和加入线下活动、查看球员主页、参与夏令营等。  
+这是本项目的前端部分，使用 [Vite](https://vitejs.dev/) + [React](https://react.dev/) 构建，界面风格现代，支持响应式设计。
 
-Currently, two official plugins are available:
+**Dribbio** is a social platform for Chinese basketball lovers to discover, join, and create pickup games, explore player profiles, and attend camps.  
+This repo contains the frontend (UI) built with [Vite](https://vitejs.dev/) and [React](https://react.dev/), designed with responsiveness and clarity.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 技术栈 | Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- ⚛️ React 18
+- ⚡ Vite
+- 💅 Tailwind CSS
+- 🔤 i18n 多语言支持
+- 🔗 与 Express 后端 API 集成
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📦 安装与开发 | Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# 安装依赖
+yarn install
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+# 启动开发环境
+yarn dev
 ```
