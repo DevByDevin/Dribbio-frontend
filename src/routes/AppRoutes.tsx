@@ -1,10 +1,15 @@
 import { Route, Routes } from 'react-router';
 import Home from '../pages/Home';
+import MainLayout from '../layout/MainLayout';
+import Login from '../pages/Login';
 
 export const AppRoutes = () => (
   <Routes>
-    <Route path='/' element={<Home />} />
-    {/* <Route path='/login' element={<Login />} />
+    <Route path='/' element={<MainLayout />}>
+      <Route index element={<Home />} />
+      <Route path='/login' element={<Login />} />
+    </Route>
+    {/* 
     <Route path='/activities' element={<ActivityList />} />
     <Route path='/activities/new' element={<ActivityCreate />} />
     <Route path='/activities/:id' element={<ActivityDetail />} />

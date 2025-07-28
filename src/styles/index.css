@@ -1,3 +1,30 @@
 @import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --animate-pulse: pulse 10s infinite;
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    10% {
+      opacity: 0.6;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  --animate-text-flash: textFlash 8s linear infinite;
+  @keyframes textFlash {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+}
