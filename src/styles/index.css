@@ -18,6 +18,7 @@
       opacity: 1;
     }
   }
+
   --animate-text-flash: textFlash 8s linear infinite;
   @keyframes textFlash {
     0% {
@@ -25,6 +26,38 @@
     }
     100% {
       background-position: 200% 0;
+    }
+  }
+
+  --animate-text-flash-fast: textFlashFast 5s linear infinite;
+  @keyframes textFlashFast {
+    0% {
+      background-position: 100% 0;
+    }
+    20% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+
+  --animate-fade-in-fifty: fadeInFifty 0.3s ease-in-out forwards;
+  @keyframes fadeInFifty {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 0.5;
+    }
+  }
+  --animate-fade-in: fadeIn 0.3s ease-in-out forwards;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 }

@@ -1,40 +1,34 @@
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 import { useAuthStore } from '../../store';
+import { ProfileButton } from './ProfileButton';
 
 export const Navbar = () => {
-  const { isAuthenticated, logout } = useAuthStore();
-  const navigate = useNavigate();
+  const { isAuthenticated } = useAuthStore();
+  const profile = localStorage.getItem('dribbio-username') || 'Profile';
 
   return (
-    <nav className='fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-white/30 shadow-md border-b border-white/20 px-6 py-4 flex items-center'>
+    <nav className='fixed top-0 left-0 h-16 w-full z-50 backdrop-blur-lg bg-white/30 shadow-md border-b border-white/20 px-6 py-4 flex items-center'>
       <div className='text-xl font-bold text-blue-600'>
         <Link to='/'>Dribbio</Link>
       </div>
-      <ul className='ml-auto flex space-x-6 text-gray-700 font-medium'>
-        <li>
+      <div className='ml-auto flex gap-1 text-gray-700 font-medium'>
+        <div className='hidden sm:block p-4'>
           <Link to='/'>Home</Link>
-        </li>
-        <li>
+        </div>
+        <div className='hidden sm:block p-4'>
           <Link to='/about'>About</Link>
-        </li>
-        <li>
+        </div>
+        <div className='hidden sm:block p-4'>
           <Link to='/contact'>Contact</Link>
-        </li>
-        <li>
+        </div>
+        <div className='p-4 hover:bg-blue-200 rounded-lg transition-all duration-400'>
           {isAuthenticated ? (
-            <button
-              onClick={() => {
-                logout();
-                navigate('/');
-              }}
-            >
-              Logout
-            </button>
+            <ProfileButton text={profile} />
           ) : (
             <Link to='/login'>Login</Link>
           )}
-        </li>
-      </ul>
+        </div>
+      </div>
     </nav>
   );
 };

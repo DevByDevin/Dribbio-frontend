@@ -11,7 +11,8 @@ const Login = () => {
       await login(user?.email || '', user?.password || '');
       navigate('/');
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error('Login error:', error);
+      return;
     }
   };
 
@@ -21,10 +22,11 @@ const Login = () => {
         onSubmit={handleLogin}
         className='bg-white p-6 rounded shadow-md w-full max-w-sm'
       >
-        <div className='text-xl font-bold text-blue-600 w-full text-center mb-4'>
+        <div className='text-2xl font-bold text-blue-600 w-full text-center mb-4'>
           <Link to='/'>Dribbio</Link>
         </div>
-        <h2 className='text-2xl font-semibold mb-4 text-center'>Login</h2>
+
+        <h2 className='text-xl font-semibold mb-4 text-center'>Login</h2>
         <div className='mb-4'>
           <label className='block text-gray-700'>Email:</label>
           <input
@@ -55,7 +57,7 @@ const Login = () => {
         </button>
         <div className='mt-4 text-center'>
           <span className='text-gray-600 mr-2'>Don't have an account?</span>
-          <Link className='w-full  py-2 rounded' to={'signup'}>
+          <Link className='w-full  py-2 rounded' to={'/signup'}>
             Sign up
           </Link>
         </div>
