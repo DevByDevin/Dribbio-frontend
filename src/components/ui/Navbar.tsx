@@ -1,8 +1,9 @@
 import { Link, useNavigate } from 'react-router';
 import { useAuthStore } from '../../store';
+import { ProfileButton } from './ProfileButton';
 
 export const Navbar = () => {
-  const { isAuthenticated, logout } = useAuthStore();
+  const { user, isAuthenticated, logout } = useAuthStore();
   const navigate = useNavigate();
 
   return (
@@ -11,25 +12,18 @@ export const Navbar = () => {
         <Link to='/'>Dribbio</Link>
       </div>
       <ul className='ml-auto flex space-x-6 text-gray-700 font-medium'>
-        <li>
+        <li className='hidden sm:block'>
           <Link to='/'>Home</Link>
         </li>
-        <li>
+        <li className='hidden sm:block'>
           <Link to='/about'>About</Link>
         </li>
-        <li>
+        <li className='hidden sm:block'>
           <Link to='/contact'>Contact</Link>
         </li>
         <li>
           {isAuthenticated ? (
-            <button
-              onClick={() => {
-                logout();
-                navigate('/');
-              }}
-            >
-              Logout
-            </button>
+            <ProfileButton text={user?.email} />
           ) : (
             <Link to='/login'>Login</Link>
           )}
