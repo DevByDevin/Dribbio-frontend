@@ -25,9 +25,13 @@ export const useAuthStore = create<AuthState>((set) => ({
     })),
   login: async (email, password) => {
     try {
-      const response = await axios.post('/api/login', { email, password });
-      localStorage.setItem('token', response.data.token);
-      set({ token: response.data.token, isAuthenticated: true });
+      const { data } = await axios.post('/api/login', { email, password });
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('dribbio-username', data.name);
+      set({
+        token: data.token,
+        isAuthenticated: true,
+      });
     } catch (error) {
       const err = error as any;
       alert(err.response?.data?.message || 'Login failed');
@@ -37,6 +41,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   },
   logout: () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('dribbioUser');
     set({ token: null, isAuthenticated: false, user: null });
   },
 }));

@@ -3,6 +3,7 @@ import Home from '../pages/Home';
 import MainLayout from '../layout/MainLayout';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
+import MyProfile from '../pages/Profile/MyProfile';
 
 export const AppRoutes = () => (
   <Routes>
@@ -10,6 +11,7 @@ export const AppRoutes = () => (
     <Route path='/signup' element={<Signup />} />
     <Route path='/' element={<MainLayout />}>
       <Route index element={<Home />} />
+      <Route path='/profile' element={<MyProfile />} />
     </Route>
     {/* 
     <Route path='/activities' element={<ActivityList />} />
