@@ -29,7 +29,10 @@ export const useAuthStore = create<AuthState>((set) => ({
       localStorage.setItem('token', response.data.token);
       set({ token: response.data.token, isAuthenticated: true });
     } catch (error) {
-      console.error('Login failed:', error);
+      const err = error as any;
+      alert(err.response?.data?.message || 'Login failed');
+      console.error('Login failed:', err);
+      return Promise.reject(err);
     }
   },
   logout: () => {
